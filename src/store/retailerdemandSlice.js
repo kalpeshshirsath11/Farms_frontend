@@ -6,7 +6,7 @@ export const retailerdemandthunk = createAsyncThunk(
   async (retailerdemanddata, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/retailer/postrequirement",
+        `${import.meta.env.VITE_API_URL}/retailer/postrequirement`,
         retailerdemanddata,
         { withCredentials: true }
       );

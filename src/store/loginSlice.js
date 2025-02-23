@@ -10,7 +10,7 @@ export const login = createAsyncThunk(
   async ({ mobileNumber, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/api/login",
+        `${import.meta.env.VITE_API_URL}/api/login`,
         { contactNumber: mobileNumber, password },
         { withCredentials: true }
       );
@@ -33,7 +33,7 @@ export const logoutThunk = createAsyncThunk(
   "loginuser/logout",
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post("https://farms-kfu1.onrender.com/api/logout", {}, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/logout`, {}, { withCredentials: true });
 
       localStorage.removeItem("token");
       localStorage.removeItem("userData");

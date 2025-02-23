@@ -16,7 +16,7 @@ export const farmerStockPost = createAsyncThunk(
     try {
       console.log("Uploading stock data...", formData);
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/farmer/poststock",
+        `${import.meta.env.VITE_API_URL}/farmer/poststock`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

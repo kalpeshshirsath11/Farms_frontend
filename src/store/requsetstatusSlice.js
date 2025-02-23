@@ -14,7 +14,7 @@ export const confReq = createAsyncThunk(
     try {
       console.log("Fetching my stock...");
       const response = await axios.get(
-        "https://farms-kfu1.onrender.com/transporter/getpendingreq",
+        `${import.meta.env.VITE_API_URL}/transporter/getpendingreq`,
         { withCredentials: true }
       );
       console.log(response);

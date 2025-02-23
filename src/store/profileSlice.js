@@ -6,7 +6,7 @@ export const registerProfile = createAsyncThunk(
   "profile/registerProfile",
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("https://farms-kfu1.onrender.com/api/signup", formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/signup`, formData);
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -21,7 +21,7 @@ export const verifyOtp = createAsyncThunk(
   "profile/verifyOtp",
   async ({ phoneNumber, otp, ...rest }, { rejectWithValue }) => {
     try {
-      const response = await axios.post("https://farms-kfu1.onrender.com/api/verifyOtp", {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/verifyOtp`, {
         phoneNumber,
         otp,
         ...rest,
@@ -42,7 +42,7 @@ export const transportDetailsThunk = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/transporter/postDetails",
+        `${import.meta.env.VITE_API_URL}/transporter/postDetails`,
         formData,
         { withCredentials: true }
       );

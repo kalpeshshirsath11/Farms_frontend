@@ -16,7 +16,7 @@ export const viewMyOrdersThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        "https://farms-kfu1.onrender.com/retailer/viewmyorders",
+        `${import.meta.env.VITE_API_URL}/retailer/viewmyorders`,
         { withCredentials: true } 
       );
       console.log("Response received:", response.data);
@@ -33,7 +33,7 @@ export const retailerBestdeal = createAsyncThunk(
     try {
       console.log("Fetching best deals...");
       const response = await axios.get(
-        `https://farms-kfu1.onrender.com/farmer/consumerdeals/viewbestdeals?farmerStockId=${farmerStockId}`,
+        `${import.meta.env.VITE_API_URL}/farmer/consumerdeals/viewbestdeals?farmerStockId=${farmerStockId}`,
         { withCredentials: true }
       );
       console.log("Best deals response:", response.data);
@@ -50,7 +50,7 @@ export const viewSupplierThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        "https://farms-kfu1.onrender.com/retailer/viewsupplier",
+        `${import.meta.env.VITE_API_URL}/retailer/viewsupplier`,
         { withCredentials: true }
       );
       console.log("Response received:", response.data);
@@ -67,7 +67,7 @@ export const retailerNotificationThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        "https://farms-kfu1.onrender.com/retailer/notifications",
+        `${import.meta.env.VITE_API_URL}/retailer/notifications`,
         { withCredentials: true }
       );
       console.log("Notification Response:", response.data);

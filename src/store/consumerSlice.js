@@ -21,7 +21,7 @@ export const consumerPostStock = createAsyncThunk(
     try {
       console.log("Uploading consumer post data...", formData);
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/consumer/postrequirement",
+        `${import.meta.env.VITE_API_URL}/consumer/postrequirement`,
         formData,
         {
           headers: { "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ export const requestsupplyconsumer = createAsyncThunk(
   async ({ groupId, farmerStockId, maxDistance }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/farmer/consumerdeals/requestsupply",
+        `${import.meta.env.VITE_API_URL}/farmer/consumerdeals/requestsupply`,
         { groupId, farmerStockId, maxDistance },
         {
           headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ export const consumerbestDeal = createAsyncThunk(
     try {
       console.log("Fetching best deals...");
       const response = await axios.get(
-        `https://farms-kfu1.onrender.com/farmer/consumerdeals/viewbestdeals?farmerStockId=${farmerStockId}`,
+        `${import.meta.env.VITE_API_URL}/farmer/consumerdeals/viewbestdeals?farmerStockId=${farmerStockId}`,
         { withCredentials: true }
       );
       console.log("Best deals response:", response.data);
@@ -83,7 +83,7 @@ export const consumerNotification = createAsyncThunk(
   "viewMyOrders/fetchNotifications",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("https://farms-kfu1.onrender.com/notifications", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/notifications`, {
         withCredentials: true,
       });
       return response.data;
@@ -98,7 +98,7 @@ export const viewMyOrders = createAsyncThunk(
   "viewMyOrders/fetch",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("https://farms-kfu1.onrender.com/viewmyorders", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/viewmyorders`, {
         withCredentials: true,
       });
       return response.data;

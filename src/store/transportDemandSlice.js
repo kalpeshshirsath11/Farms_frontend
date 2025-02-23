@@ -7,7 +7,7 @@ export const transportDemandThunk = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://farms-kfu1.onrender.com/farmer/reqtransporter",
+        `${import.meta.env.VITE_API_URL}/farmer/reqtransporter`,
         formData,
         { withCredentials: true }
       );
@@ -24,7 +24,7 @@ export const myTransportDemand = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `https://farms-kfu1.onrender.com/farmer/farmFeed`, // Farmer ID as query parameter
+        `${import.meta.env.VITE_API_URL}/farmer/farmFeed`, // Farmer ID as query parameter
         
         { withCredentials: true }
       );
