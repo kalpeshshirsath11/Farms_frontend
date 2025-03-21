@@ -288,6 +288,7 @@ export default function FarmerInsight() {
             </div>
           </div>
         </div>
+{/* div<></> */}
       </div>
     </main>
   );
