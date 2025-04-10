@@ -104,21 +104,23 @@ const FarmerDashboard = () => {
     dispatch(acceptInvitation(id));
   };
 
-  const handleOnclickMyDemands = async () => {
-    try {
-      const result = await dispatch(myTransportDemand()); // ✅ await here
-      console.log("API Response:", result);
-      if (result.payload) {
-        settransportDemands(result.payload);
-      } else {
-        console.warn("Warning: No data received in payload.");
+  const handleOnclickMyDemands = () => {
+    dispatch(myTransportDemand())
+      .then((result) => {
+        console.log("API Response:", result);
+        if (result.payload) {
+          settransportDemands(result.payload);
+        } else {
+          console.warn("Warning: No data received in payload.");
+          settransportDemands([]);
+        }
+      })
+      .catch((error) => {
+        console.error("Request failed:", error);
         settransportDemands([]);
-      }
-    } catch (error) {
-      console.error("Request failed:", error);
-      settransportDemands([]);
-    }
+      });
   };
+  
 
   const handleshopkeeperBestdeals = (payload) => {
     try {
