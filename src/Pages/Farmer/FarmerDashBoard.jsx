@@ -106,10 +106,9 @@ const FarmerDashboard = () => {
 
   const handleOnclickMyDemands = async () => {
     try {
-      const result = dispatch(myTransportDemand());
+      const result = await dispatch(myTransportDemand()); // ✅ await here
       console.log("API Response:", result);
       if (result.payload) {
-        console.log(result.payload);
         settransportDemands(result.payload);
       } else {
         console.warn("Warning: No data received in payload.");
