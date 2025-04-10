@@ -108,8 +108,9 @@ const FarmerDashboard = () => {
     dispatch(myTransportDemand())
       .then((result) => {
         console.log("API Response:", result);
-        if (result.payload) {
-          settransportDemands(result.payload);
+        const payload = result.payload;
+        if (payload) {
+          settransportDemands(payload);
         } else {
           console.warn("Warning: No data received in payload.");
           settransportDemands([]);
