@@ -21,7 +21,34 @@ const FarmerDashboard = () => {
   const [activeTab, setActiveTab] = useState("stocks");
   const [expandedStock, setExpandedStock] = useState(null);
   const [stocks, setStocks] = useState([]);
-  const [pendingrequest, setPendingrequest] = useState([]);
+  const [pendingrequest, setPendingrequest] = useState([
+    {
+      _id: "67f4bba0450c110ab9bd2079",
+      Departlocation: {
+        type: "Point",
+        place: "Pimpri Chinchwad Pune Maharashtra",
+        coordinates: [18.5204, 73.8567]
+      },
+      DepatrureDate: "2025-04-21T00:00:00.000Z",
+      Destination: {
+        type: "Point",
+        place: "Swargate Pune Maharashtra",
+        coordinates: [18.5204, 73.8567]
+      },
+      Farmerid: "67dd140ef28f82ea45140df6",
+      Transporterid: {
+        _id: "67dd5153f28f82ea45140f43",
+        firstName: "Kalpesh",
+        lastName: "Shirsath"
+      },
+      completionFlag: false,
+      createdAt: "2025-04-08T06:01:04.268Z",
+      quantities: 20000,
+      updatedAt: "2025-04-08T06:01:04.268Z",
+      __v: 0
+    }
+  ]);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -324,31 +351,51 @@ const FarmerDashboard = () => {
 
         {/* Notifications Tab */}
         {activeTab === "notifications" && (
-          <div className="space-y-4">
-            {pendingrequest.length <= 0 ? (
-              <p className="text-gray-500 text-center">No notifications available</p>
-            ) : (
-              pendingrequest.map((notification) => (
-                <motion.div
-                  key={notification._id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className={`p-4 rounded-lg shadow-sm ${
-                    notification.read
-                      ? "bg-white"
-                      : "bg-green-50 border-l-4 border-green-600"
-                  }`}
-                >
-                  <h1>{new Date(notification.DepatrureDate).toLocaleDateString("en-GB")}</h1>
-                  <h2>{notification.Departlocation?.place}</h2>
-                  <button className="border-4" onClick={() => handleAccept(notification._id)}>
-                    Accept
-                  </button>
-                </motion.div>
-              ))
-            )}
+  <div className="space-y-4">
+    {pendingrequest.length <= 0 ? (
+      <p className="text-gray-500 text-center">No notifications available</p>
+    ) : (
+      pendingrequest.map((notification) => (
+        <motion.div
+          key={notification._id}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className={`p-4 rounded-lg shadow-md border ${
+            notification.read
+              ? "bg-white border-gray-200"
+              : "bg-green-50 border-l-4 border-green-600"
+          }`}
+        >
+          <div className="flex flex-col md:flex-row md:justify-between">
+            <div className="flex flex-col space-y-2">
+              <span className="text-sm text-gray-600">
+                Date: {new Date(notification.DepatrureDate).toLocaleDateString("en-GB")}
+              </span>
+              <span className="text-sm text-gray-700 font-medium">
+                From: {notification.Departlocation?.place}
+              </span>
+              <span className="text-sm text-gray-700 font-medium">
+                To: {notification.Destination?.place}
+              </span>
+              <span className="text-sm text-gray-600">
+                Quantity: {notification.quantities}kg
+              </span>
+            </div>
+            <div className="flex items-center mt-2 md:mt-0">
+              <button
+                onClick={() => handleAccept(notification._id)}
+                className="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded hover:bg-green-700 transition"
+              >
+                Accept
+              </button>
+            </div>
           </div>
-        )}
+        </motion.div>
+      ))
+    )}
+  </div>
+)}
+
 
       </div>
     </div>
