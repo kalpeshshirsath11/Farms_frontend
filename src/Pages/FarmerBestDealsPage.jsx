@@ -147,7 +147,7 @@ if(loading) return <Loader/>
                     <div className="bg-green-50 rounded-xl p-4 mb-6">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <div className="text-sm text-gray-500 mb-1">Price per Quintal</div>
+                          <div className="text-sm text-gray-500 mb-1">Price per Kg</div>
                           <div className="flex items-center gap-2">
                             <IndianRupee className="w-5 h-5 text-green-600" />
                             <span className="text-xl font-bold text-gray-800">
@@ -160,7 +160,7 @@ if(loading) return <Loader/>
                           <div className="flex items-center gap-2">
                             <TrendingUp className="w-5 h-5 text-green-600" />
                             <span className="text-xl font-bold text-gray-800">
-                              {deal.group.totalQuantity} Quintals
+                              {deal.group.totalQuantity} Kg
                             </span>
                           </div>
                         </div>
@@ -174,10 +174,10 @@ if(loading) return <Loader/>
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      {isExpanded ? 'Hide Retailers' : `View ${deal.group.retailers.length} Retailers`}
+                      {isExpanded ? 'Hide shopkeeper' : `View ${deal.group.retailers.length} shopkeeper`}
                       {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                     </motion.button>
-                         <motion.button
+                         {/* <motion.button
                                                                
                                                                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r  px-2 py-2  from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white  rounded-xl font-medium transition-all shadow-md hover:shadow-lg"
                                                                whileHover={{ scale: 1.01 }}
@@ -187,7 +187,7 @@ if(loading) return <Loader/>
                                                               }}
                                                              >
                                                                 Request for supply
-                                                             </motion.button>
+                                                             </motion.button> */}
                    </div>
                     {/* <button > kalpesh</button> */}
                   </div>

@@ -151,33 +151,14 @@ const ConsumerBestDeals = () => {
                               <TrendingUp className="w-5 h-5 text-green-600" />
                               <span className="text-xl font-bold text-gray-800">
                                 {deal.group?.totalQuantity
-                                } Quintals
+                                } Kg
                               </span>
                             </div>
                           </div>
                         </div>
                       </div>
 <div className="grid grid-cols-2 gap-4 mt-4 md:pr-96">
-                      <motion.button
-                        onClick={() => toggleDealExpansion(deal.group?._id)}
-                        className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white py-4 px-6 rounded-xl font-medium transition-all shadow-md hover:shadow-lg"
-                        whileHover={{ scale: 1.01 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        {isExpanded ? 'Hide Retailers' : `View ${deal.group?.consumers?.length} Retailers`}
-                        {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-                      </motion.button>
-                       <motion.button
-                                                                                     
-                                                                                     className="w-full flex items-center justify-center gap-2 bg-gradient-to-r  px-2 py-2  from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white  rounded-xl font-medium transition-all shadow-md hover:shadow-lg"
-                                                                                     whileHover={{ scale: 1.01 }}
-                                                                                     whileTap={{ scale: 0.98 }}
-                                                                                     onClick={()=>{
-                                                                                      handleSupplyRequest(deal.groupId,farmerStockId,deal.maxDistance)
-                                                                                    }}
-                                                                                   >
-                                                                                      Request for supply
-                                                                                   </motion.button>
+          
 
                       {/* <button onClick={() => {
                         handleSupplyRequest(deal.group._id, farmerStockId, deal.maxDistance);
@@ -207,7 +188,7 @@ const ConsumerBestDeals = () => {
                                 <div className="flex items-center justify-between mb-4">
                                   <div className="flex items-center gap-2">
                                     <Package className="w-5 h-5 text-green-600" />
-                                    <span className="font-semibold text-gray-800">Retailer #{idx + 1}</span>
+                                    <span className="font-semibold text-gray-800">Consumer #{idx + 1}</span>
                                   </div>
                                   <div className="flex items-center gap-1">
                                     {[...Array(5)].map((_, i) => (
